@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ const Login = () => {
 
     const[ emailId,setemilId ] = useState("smit@gmail.com")
     const[ password,setpassword ] = useState("Smit@0011")
+    const[ errorMessage,seterrorMessage ] = useState("")
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
@@ -18,13 +19,12 @@ const Login = () => {
             emailId,password
         },{ withCredentials : true});
         
-        dispatch(addUser(res.data))
+        dispatch(addUser(res.data || res.data.user))
         return navigate("/feed");
         }catch(err){
-            console.log(err)
+            seterrorMessage(err?.response?.data || "Invalid Credential!!");
         }
     }
-
     return(
     
     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
@@ -35,7 +35,7 @@ const Login = () => {
  
     <label className="label">Password</label>
     <input type="password" className="input" placeholder="Password" value={password} onChange={(e) => setpassword(e.target.value)}/>
-
+    <p className="font-bold text-red-500">{errorMessage}</p>
     <button className="btn btn-neutral mt-4" onClick={handleLogin}>Login</button>
     </fieldset>
     )
