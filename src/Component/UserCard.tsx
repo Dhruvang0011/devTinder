@@ -1,4 +1,20 @@
+import axios from "axios";
+import { Base_URL } from "../../utils/constants";
+import { useDispatch } from "react-redux";
+import { removeFeed } from "../../utils/feedSlice";
+
 const UserCard = ({ user }) => {
+  const dispatch = useDispatch()
+
+  const handleSendRequest = async(userId,status)=> {
+    try{
+      const res = axios.post(`${Base_URL}/request/send/${status}/${userId}`,{},{withCredentials:true})
+      dispatch(removeFeed(userId));
+
+    }catch(err){
+      console.log(err?.message)
+    }
+  }
   return (
     <div className="relative w-96 h-[550px] rounded-xl overflow-hidden shadow-lg m-10">
 
@@ -47,9 +63,11 @@ const UserCard = ({ user }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 mt-4">
+        {user._id && <div className="flex gap-3 mt-4">
 
-          <button className="
+          <button onClick = {() => {
+            handleSendRequest(user._id ,"intrested")
+          }} className="
             flex-1 py-2 rounded-lg
             bg-gradient-to-r from-green-500 to-emerald-600
             text-white font-semibold
@@ -58,7 +76,9 @@ const UserCard = ({ user }) => {
             Send Request
           </button>
 
-          <button className="
+          <button onClick = {() => {
+            handleSendRequest(user._id ,"ignored")
+          }} className="
             flex-1 py-2 rounded-lg
             bg-black/60 border border-white/30
             text-white font-semibold
@@ -68,7 +88,7 @@ const UserCard = ({ user }) => {
             Ignore
           </button>
 
-        </div>
+        </div>} 
 
       </div>
     </div>

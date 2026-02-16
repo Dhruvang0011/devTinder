@@ -13,7 +13,8 @@ const Body = () => {
     const navigate = useNavigate()
     const userData = useSelector((store) => store.user)
     const fetchUser = async () => {
-        try{const user = await axios.get(Base_URL + "/profile/view",{
+        try{
+            const user = await axios.get(Base_URL + "/profile/view",{
             withCredentials : true,
         });
 
@@ -22,7 +23,7 @@ const Body = () => {
             if(err.response?.status == 401){
             navigate("/");
             }
-            console.log("Error:",err)
+            console.log("Error:",err?.message)
         }
     }
 
