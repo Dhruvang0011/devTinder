@@ -10,6 +10,8 @@ import { Provider } from 'react-redux'
 import appStore from "../utils/appStore.tsx"
 import UserProfileUpdate from './Component/UserProfileUpdate.tsx'
 import Conversation from './Component/Conversion.tsx'
+import Signup from './Component/Signup.tsx'
+import Search from './Component/Search.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={appStore}>
@@ -21,6 +23,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/profile" element = {<UserProfileUpdate/>}></Route>
           <Route path="/connections" element = {<Conversation/>}></Route>
           <Route path="/requests" element = {<Request/>}></Route>
+          <Route path="/signuppage" element = {<Signup/>}></Route>
+          <Route path="/search" element = {<Search/>}></Route>
         </Route>
 
       </Routes>
