@@ -46,7 +46,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="card w-96 bg-neutral-900/60 shadow-xl p-6">
+      <div className="rounded-3xl w-96 bg-neutral-900/60 shadow-xl p-6">
         <h2 className="text-2xl font-bold text-center mb-6">Login to DevTinder</h2>
 
         {/* Email */}

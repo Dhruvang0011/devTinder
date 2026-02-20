@@ -57,143 +57,169 @@ try{
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center my-4 p-4">
-      <div className="bg-neutral-900/60 shadow-lg rounded-xl w-full max-w-2xl p-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Create Account</h2>
+  <div className="min-h-screen flex items-center justify-center bg-base-200 px-4 my-6">
+    
+    <div className="w-full max-w-2xl bg-base-100 shadow-2xl rounded-2xl p-8 border border-base-300">
 
-        {error && (
-          <p className="text-red-500 text-base text-center mb-4">{error}</p>
-        )}
+      {/* Title */}
+      <h2 className="text-3xl font-bold text-center mb-2">
+        👨‍💻 Create Your DevTinder Account
+      </h2>
+      <p className="text-center text-sm text-gray-500 mb-6">
+        Connect with developers around the world
+      </p>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Error */}
+      {error && (
+        <div className="alert alert-error mb-4 text-sm">
+          {error}
+        </div>
+      )}
 
-          {/* First Name */}
-          <div>
-            <label className="block font-medium">First Name *</label>
-            <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-5"
+      >
 
-          {/* Last Name */}
-          <div>
-            <label className="block font-medium">Last Name *</label>
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+        {/* First Name */}
+        <div>
+          <label className="label font-medium">First Name *</label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            className="input input-bordered w-full focus:input-primary"
+          />
+        </div>
 
-          {/* Age */}
-          <div>
-            <label className="block font-medium">Age *</label>
-            <input
-              type="number"
-              name="age"
-              value={formData.age}
-              onChange={handleChange}
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+        {/* Last Name */}
+        <div>
+          <label className="label font-medium">Last Name *</label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            className="input input-bordered w-full focus:input-primary"
+          />
+        </div>
 
-          {/* Skill */}
-          <div>
-            <label className="block font-medium">Skill *</label>
-            <input
-              type="text"
-              name="skil"
-              value={formData.skil}
-              onChange={handleChange}
-              placeholder="e.g. React, Node, C++"
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+        {/* Age */}
+        <div>
+          <label className="label font-medium">Age *</label>
+          <input
+            type="number"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            className="input input-bordered w-full focus:input-primary"
+          />
+        </div>
 
-          {/* Photo URL */}
-          <div>
-            <label className="block font-medium">Photo URL</label>
-            <input
-              type="text"
-              name="photoUrl"
-              value={formData.photoUrl}
-              onChange={handleChange}
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+        {/* Skill */}
+        <div>
+          <label className="label font-medium">Skills *</label>
+          <input
+            type="text"
+            name="skil"
+            value={formData.skil}
+            onChange={handleChange}
+            placeholder="React, Node, C++, etc."
+            className="input input-bordered w-full focus:input-primary"
+          />
+        </div>
 
-          {/* Gender */}
-          <div>
-            <label className="block font-medium">Gender</label>
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="w-full border p-2 rounded-md bg-neutral-900/60"
-            >
-              <option  value="">Select</option>
-              <option  value="male">Male</option>
-              <option  value="female">Female</option>
-              <option  value="other">Other</option>
-            </select>
-          </div>
+        {/* Photo URL */}
+        <div>
+          <label className="label font-medium">Photo URL</label>
+          <input
+            type="text"
+            name="photoUrl"
+            value={formData.photoUrl}
+            onChange={handleChange}
+            className="input input-bordered w-full focus:input-primary"
+          />
+        </div>
 
-          {/* Email */}
-          <div className="md:col-span-2">
-            <label className="block font-medium">Email ID *</label>
-            <input
-              type="email"
-              name="emailId"
-              value={formData.emailId}
-              onChange={handleChange}
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+        {/* Gender */}
+        <div>
+          <label className="label font-medium">Gender</label>
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+            className="select select-bordered w-full focus:select-primary"
+          >
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
 
-          {/* Password */}
-          <div className="md:col-span-2">
-            <label className="block font-medium">Password *</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+        {/* Email */}
+        <div className="md:col-span-2">
+          <label className="label font-medium">Email ID *</label>
+          <input
+            type="email"
+            name="emailId"
+            value={formData.emailId}
+            onChange={handleChange}
+            className="input input-bordered w-full focus:input-primary"
+          />
+        </div>
 
-          {/* About */}
-          <div className="md:col-span-2">
-            <label className="block font-medium">About</label>
-            <textarea
-              name="about"
-              value={formData.about}
-              onChange={handleChange}
-              rows="3"
-              className="w-full border p-2 rounded-md"
-            />
-          </div>
+        {/* Password */}
+        <div className="md:col-span-2">
+          <label className="label font-medium">Password *</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="input input-bordered w-full focus:input-primary"
+          />
+        </div>
 
-          {/* Button */}
-          <div className="md:col-span-2">
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-            >
-              Sign Up
-            </button>
-          </div>
+        {/* About */}
+        <div className="md:col-span-2">
+          <label className="label font-medium">About</label>
+          <textarea
+            name="about"
+            value={formData.about}
+            onChange={handleChange}
+            rows="3"
+            className="textarea textarea-bordered w-full focus:textarea-primary"
+          />
+        </div>
 
-        </form>
+        {/* Button */}
+        <div className="md:col-span-2 mt-2">
+          <button
+            type="submit"
+            className="btn btn-primary w-full text-lg"
+          >
+            🚀 Sign Up
+          </button>
+        </div>
+
+      </form>
+
+      {/* Login Line */}
+      <div className="text-center mt-6 text-sm">
+        Already have an account?{" "}
+        <span
+          onClick={() => navigate("/")}
+          className="text-primary font-semibold cursor-pointer hover:underline"
+        >
+          Login
+        </span>
       </div>
+
     </div>
-  );
+  </div>
+);
 };
 
 export default Signup;

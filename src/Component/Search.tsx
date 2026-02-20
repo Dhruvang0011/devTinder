@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Base_URL } from "../../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const trimmed = searchText.trim();
@@ -40,12 +43,26 @@ const Search = () => {
     }
   };
 
+  const handleSendRequest = async (userId) => {
+    try {
+      await axios.post(
+        `${Base_URL}/request/send/intrested/${userId}`,
+        {},
+        { withCredentials: true }
+      );
+
+      // Update UI instantly
+      setUsers(prev => prev.filter(u => u._id !== userId));
+    } catch (err) {
+      console.error("Request error:", err);
+    }
+  };
+
   return (
-    <div className="min-h-screen  py-20 px-4">
+    <div className="min-h-screen py-10 px-4">
       <div className="max-w-3xl mx-auto">
 
-        {/* Heading */}
-        <h1 className="text-3xl font-bold text-center text-white mb-10">
+        <h1 className="text-2xl font-bold text-center text-white mb-10">
           🔍 Find Developers
         </h1>
 
@@ -56,21 +73,17 @@ const Search = () => {
             placeholder="Search by first name..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="w-full p-4 pl-12 rounded-2xl bg-slate-800/70 backdrop-blur-md border border-slate-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            className="w-full p-3 pl-10 rounded-xl bg-slate-800/70 border border-slate-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           />
-          <span className="absolute left-4 top-4 text-gray-400">
-            🔎
-          </span>
+          <span className="absolute left-3 top-3 text-gray-400">🔎</span>
         </div>
 
-        {/* Loading */}
         {loading && (
           <div className="text-center text-gray-400 animate-pulse">
             Searching developers...
           </div>
         )}
 
-        {/* No Results */}
         {!loading && users.length === 0 && searchText.trim() && (
           <div className="text-center text-gray-400 bg-slate-800 p-6 rounded-xl border border-slate-700">
             No developers found 😔
@@ -78,27 +91,41 @@ const Search = () => {
         )}
 
         {/* Results */}
-        <div className="grid gap-6">
+        <div className="grid gap-5">
           {users.map((user) => (
             <div
               key={user?._id}
-              className="group bg-slate-800/70 backdrop-blur-lg border border-slate-700 p-5 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:border-blue-500 transition duration-300"
+              className="group bg-slate-800/70 border border-slate-700 p-4 rounded-xl shadow hover:border-blue-500 transition duration-300"
             >
-              <div className="flex items-center gap-5">
-                <img
-                  src={user?.photoUrl}
-                  alt="profile"
-                  className="w-20 h-20 rounded-full object-cover border-2 border-blue-500 group-hover:scale-105 transition duration-300"
-                />
+              <div className="flex items-center justify-between gap-4">
+                
+                <div className="flex items-center gap-4">
+                  <img
+                    src={user?.photoUrl}
+                    alt="profile"
+                    className="w-16 h-16 rounded-full object-cover border border-blue-500"
+                  />
 
-                <div>
-                  <h2 className="text-xl font-semibold text-white">
-                    {user.firstName} {user.lastName}
-                  </h2>
-                  <p className="text-sm text-gray-400 mt-1 line-clamp-2">
-                    {user.about || "No bio available"}
-                  </p>
+                  <div>
+                    <h2 className="text-lg font-semibold text-white">
+                      {user.firstName} {user.lastName}
+                    </h2>
+                    <p className="text-xs text-gray-400 mt-1 line-clamp-2">
+                      {user.about || "No bio available"}
+                    </p>
+                  </div>
                 </div>
+
+                {/* Conditional Button */}
+                
+                  <button
+                    onClick={() => handleSendRequest(user._id)}
+                    className="px-4 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
+                  >
+                    Send Request
+                  </button>
+                
+
               </div>
             </div>
           ))}

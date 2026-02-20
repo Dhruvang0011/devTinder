@@ -25,7 +25,7 @@ const Navbar =  () => {
     {/* PAGE CONTENT */}
     <div className="drawer-content">
 
-      <div className="navbar bg-accent-content shadow-sm px-6">
+      <div className="navbar bg-accent-content shadow-sm">
 
         {/* LEFT SIDE */}
         <div className="navbar-start">
@@ -57,7 +57,7 @@ const Navbar =  () => {
         {/* CENTER */}
         <div className="navbar-center">
           {!user ? (
-            <a className="btn btn-ghost text-xl">👨‍💻 DevTinder</a>
+            <a className="btn btn-ghost text-xl mr-[600px]">👨‍💻 DevTinder</a>
           ) : (
             <Link to="/feed" className="btn btn-ghost text-xl">
               👨‍💻 DevTinder
@@ -71,7 +71,7 @@ const Navbar =  () => {
 
             {/* SEARCH */}
             <Link to="/search">
-              <button className="btn btn-ghost btn-circle mx-0.5">
+              <button className="btn btn-ghost btn-circle">
                 🔍
               </button>
             </Link>
@@ -88,7 +88,7 @@ const Navbar =  () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar mx-1"
+                className="btn btn-ghost btn-circle avatar mx-2"
               >
                 <div className="w-10 rounded-full">
                   <img src={user.photoUrl} alt="User avatar" />

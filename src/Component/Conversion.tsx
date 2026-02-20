@@ -29,7 +29,7 @@ const Conversations = () => {
   }, [conversations]);
 
   return (
-    <div className="h-screen flex bg-neutral-800 w-full">
+    <div className="h-screen flex bg-neutral-800 w-full overflow-y-hidden">
       
       {/* LEFT SIDE - Conversation List */}
       <div className="w-1/3 border-r border-white/10 p-6 overflow-y-auto">
