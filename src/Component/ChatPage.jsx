@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { Base_URL } from "../../utils/constants";
 import { useSelector } from "react-redux";
 import { io } from "socket.io-client";
 
@@ -16,7 +15,7 @@ const Chat = ({ conversationId }) => {
         CONNECT SOCKET ONCE
      ============================== */
   useEffect(() => {
-    socketRef.current = io("http://localhost:3000", {
+    socketRef.current = io(`${import.meta.env.VITE_API_URL}`, {
       withCredentials: true,
     });
 
@@ -66,7 +65,7 @@ const Chat = ({ conversationId }) => {
     const fetchMessages = async () => {
       try {
         const res = await axios.get(
-          `${Base_URL}/message/${conversationId}`,
+          `${import.meta.env.VITE_API_URL}/message/${conversationId}`,
           { withCredentials: true }
         );
 

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Base_URL } from "../../utils/constants";
-import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
@@ -29,7 +27,7 @@ const Search = () => {
       setLoading(true);
 
       const res = await axios.post(
-        `${Base_URL}/user/search`,
+        `${import.meta.env.VITE_API_URL}/user/search`,
         { firstName: value },
         { withCredentials: true }
       );
@@ -45,7 +43,7 @@ const Search = () => {
   const handleSendRequest = async (userId) => {
     try {
       await axios.post(
-        `${Base_URL}/request/send/intrested/${userId}`,
+        `${import.meta.env.VITE_API_URL}/request/send/intrested/${userId}`,
         {},
         { withCredentials: true }
       );

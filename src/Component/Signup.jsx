@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import { Base_URL } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -37,7 +36,7 @@ const Signup = () => {
     }
 try{  
     setError("");
-    const res = await axios.post(Base_URL + "/signup",{
+    const res = await axios.post(`${import.meta.env.VITE_API_URL}/signup`,{
         firstName,
         lastName,
         photoUrl : photoUrl || undefined,

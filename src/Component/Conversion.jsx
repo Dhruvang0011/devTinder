@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Base_URL } from "../../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addconversation } from "../../utils/conversation";
 import Chat from "./ChatPage";
@@ -14,7 +13,7 @@ const Conversations = () => {
 
   const fetchConversations = async () => {
     try {
-      const res = await axios.get(Base_URL + "/conversations", {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/conversations`, {
         withCredentials: true,
       });
 

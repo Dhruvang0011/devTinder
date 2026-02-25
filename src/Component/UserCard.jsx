@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Base_URL } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeFeed } from "../../utils/feedSlice";
 
@@ -9,7 +8,7 @@ const UserCard = ({ user }) => {
   const handleSendRequest = async (userId, status) => {
     try {
       await axios.post(
-        `${Base_URL}/request/send/${status}/${userId}`,
+        `${import.meta.env.VITE_API_URL}/request/send/${status}/${userId}`,
         {},
         { withCredentials: true }
       );

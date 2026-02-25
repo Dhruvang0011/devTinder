@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UserCard from "./UserCard";
 import axios from "axios";
-import { Base_URL } from "../../utils/constants";
 import { addUser } from "../../utils/userSlice";
 
 const UserProfileUpdate = () => {
@@ -36,7 +35,7 @@ const UserProfileUpdate = () => {
     e.preventDefault();
     seterror("")
     try{
-      const res = await axios.patch(Base_URL + "/profile/update",{
+      const res = await axios.patch(`${import.meta.env.VITE_API_URL}/profile/update`,{
               firstName,
               lastName,
               photoUrl,
