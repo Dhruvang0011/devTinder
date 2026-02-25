@@ -2,7 +2,6 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import axios from "axios";
-import { Base_URL } from "../../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../utils/userSlice";
 import { useEffect } from "react";
@@ -14,7 +13,7 @@ const Body = () => {
 
   const fetchUser = async () => {
     try {
-      const user = await axios.get(Base_URL + "/profile/view", {
+      const user = await axios.get(`${import.meta.env.VITE_API_URL}/profile/view`, {
         withCredentials: true,
       });
 
