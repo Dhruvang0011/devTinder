@@ -1,19 +1,18 @@
-
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Body from './Component/Body.tsx'
-import Feed from "./Component/Feed.tsx"
-import Login from './Component/Login.tsx'
-import Request from "./Component/Request.tsx"
-import { Provider } from 'react-redux' 
-import appStore from "../utils/appStore.tsx"
-import UserProfileUpdate from './Component/UserProfileUpdate.tsx'
-import Conversation from './Component/Conversion.tsx'
-import Signup from './Component/Signup.tsx'
-import Search from './Component/Search.tsx'
+import Body from './Component/Body'
+import Feed from './Component/Feed'
+import Login from './Component/Login'
+import Request from './Component/Request'
+import { Provider } from 'react-redux'
+import appStore from '../utils/appStore'
+import UserProfileUpdate from './Component/UserProfileUpdate'
+import Conversation from './Component/Conversion'
+import Signup from './Component/Signup'
+import Search from './Component/Search'
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('root')).render(
   <Provider store={appStore}>
   <BrowserRouter basename="/">
       <Routes>

@@ -8,7 +8,6 @@ const Search = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const trimmed = searchText.trim();

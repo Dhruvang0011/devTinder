@@ -32,7 +32,7 @@ const UserProfileUpdate = () => {
 }, [user]);
 
 
-  const saveUser = async(e: React.FormEvent) => {
+  const saveUser = async(e) => {
     e.preventDefault();
     seterror("")
     try{
@@ -51,23 +51,24 @@ const UserProfileUpdate = () => {
               setnotification(false)
             },3000);
     }catch(err){
-      seterror(err.response.data)
+      seterror(err?.response.data)
     }
   }
 
   return (
-    <div className="min-h-screen rounded-4xl bg-gradient-to-br bg-neutral-900/80 flex items-center justify-center p-6 m-6">
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+  <div className="min-h-screen bg-neutral-900/80 px-4 sm:px-6 py-8 overflow-y-auto rounded-3xl">
 
-        {/* FORM */}
-        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-8 shadow-2xl">
+    <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-2">
+
+      {/* FORM */}
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 sm:p-8 shadow-2xl">
           <h2 className="text-3xl font-bold text-white mb-6 text-center">
             ✨ Update Your Profile
           </h2>
 
           <form onSubmit={saveUser} className="space-y-5">
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <input
                 className="w-full px-4 py-3 rounded-lg bg-black/40 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 placeholder="First Name"
@@ -157,7 +158,7 @@ const UserProfileUpdate = () => {
         </div>
 
         {/* LIVE PREVIEW */}
-        <div className="flex justify-center items-start">
+        <div className="flex justify-center lg:justify-end mt-10">
           <UserCard
             user={{
               firstName,

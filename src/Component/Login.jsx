@@ -45,15 +45,18 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="rounded-3xl w-96 bg-neutral-900/60 shadow-xl p-6">
-        <h2 className="text-2xl font-bold text-center mb-6">Login to DevTinder</h2>
+    <div className="w-full flex items-center justify-center px-4 sm:px-6 md:px-0 py-24">
+      <div className="w-full max-w-md bg-neutral-900/70 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8">
+
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6">
+          Login to DevTinder
+        </h2>
 
         {/* Email */}
-        <label className="label">Email</label>
+        <label className="text-sm font-medium">Email</label>
         <input
           type="email"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full mt-1"
           placeholder="Enter your email"
           value={emailId}
           onChange={(e) => setEmailId(e.target.value)}
@@ -61,10 +64,10 @@ const Login = () => {
         />
 
         {/* Password */}
-        <label className="label mt-4">Password</label>
+        <label className="text-sm font-medium mt-4 block">Password</label>
         <input
           type="password"
-          className="input input-bordered w-full"
+          className="input input-bordered w-full mt-1"
           placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -84,11 +87,15 @@ const Login = () => {
           onClick={handleLogin}
           disabled={loading}
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading ? (
+            <span className="loading loading-spinner loading-sm"></span>
+          ) : (
+            "Login"
+          )}
         </button>
 
         {/* Divider */}
-        <div className="divider">OR</div>
+        <div className="divider text-sm">OR</div>
 
         {/* Signup Option */}
         <p className="text-center text-sm">
@@ -100,6 +107,7 @@ const Login = () => {
             Sign Up
           </Link>
         </p>
+
       </div>
     </div>
   );
