@@ -30,9 +30,9 @@ const Navbar = () => {
     {/* PAGE CONTENT */}
     <div className="drawer-content">
 <div className="navbar bg-accent-content shadow-sm">
-  
+
   {/* LEFT */}
-  <div className="navbar-start">
+  <div className="navbar-start flex-1">
     {user && (
       <label
         htmlFor="main-drawer"
@@ -58,59 +58,62 @@ const Navbar = () => {
 
   {/* CENTER */}
   <div className="navbar-center flex-1 justify-center">
-  {!user ? (
-    <span className="btn btn-ghost text-xl">
-      👨‍💻 DevTinder
-    </span>
-  ) : (
-    <Link to="/feed" className="btn btn-ghost text-xl">
-      👨‍💻 DevTinder
-    </Link>
-  )}
-</div>
+    {!user ? (
+      <span className="btn btn-ghost text-xl">
+        👨‍💻 DevTinder
+      </span>
+    ) : (
+      <Link to="/feed" className="btn btn-ghost text-xl">
+        👨‍💻 DevTinder
+      </Link>
+    )}
+  </div>
 
   {/* RIGHT */}
-  {user && (
-    <div className="navbar-end">
-      <Link to="/search">
-        <button className="btn btn-ghost btn-circle">
-          🔍
-        </button>
-      </Link>
+  <div className="navbar-end flex-1 justify-end">
+    {user && (
+      <>
+        <Link to="/search">
+          <button className="btn btn-ghost btn-circle">
+            🔍
+          </button>
+        </Link>
 
-      <Link to="/requests">
-        <button className="btn btn-ghost btn-circle mx-0.5">
-          🔔
-        </button>
-      </Link>
+        <Link to="/requests">
+          <button className="btn btn-ghost btn-circle mx-0.5">
+            🔔
+          </button>
+        </Link>
 
-      <div className="dropdown dropdown-end">
-        <div
-          tabIndex={0}
-          role="button"
-          className="btn btn-ghost btn-circle avatar mx-2"
-        >
-          <div className="w-10 rounded-full">
-            <img src={user?.photoUrl} alt="User avatar" />
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar mx-2"
+          >
+            <div className="w-10 rounded-full">
+              <img src={user?.photoUrl} alt="User avatar" />
+            </div>
           </div>
-        </div>
 
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
-        >
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <button onClick={handleLogout}>
-              Logout
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  )}
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <button onClick={handleLogout}>
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </>
+    )}
+  </div>
+
 </div>
     </div>
 
