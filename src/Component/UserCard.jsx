@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { removeFeed } from "../../utils/feedSlice";
+import toast from "react-hot-toast";
 
 const UserCard = ({ user }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,20 @@ const UserCard = ({ user }) => {
       );
 
       dispatch(removeFeed(userId));
+
+      // ✅ SUCCESS TOASTS
+      if (status === "intrested") {
+        toast.success("🚀 Request Sent Successfully!");
+      }
+
+      if (status === "ignored") {
+        toast("❌ User Ignored", {
+          icon: "👀",
+        });
+      }
+
     } catch (err) {
+      toast.error("Something went wrong ❌");
       console.log(err?.message);
     }
   };
@@ -52,14 +66,12 @@ const UserCard = ({ user }) => {
           {user.skil?.map((s, index) => (
             <span
               key={index}
-              className="
-                px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium rounded-full
+              className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-medium rounded-full
                 bg-white/20 backdrop-blur-md
                 border border-white/30
                 text-white
                 hover:bg-white hover:text-black
-                transition-all duration-300
-              "
+                transition-all duration-300"
             >
               {s}
             </span>
@@ -72,25 +84,21 @@ const UserCard = ({ user }) => {
 
             <button
               onClick={() => handleSendRequest(user._id, "intrested")}
-              className="
-                flex-1 py-2 text-sm sm:text-base rounded-lg
+              className="flex-1 py-2 text-sm sm:text-base rounded-lg
                 bg-gradient-to-r from-green-500 to-emerald-600
                 text-white font-semibold
-                hover:scale-105 transition-transform
-              "
+                hover:scale-105 transition-transform"
             >
               Send Request
             </button>
 
             <button
               onClick={() => handleSendRequest(user._id, "ignored")}
-              className="
-                flex-1 py-2 text-sm sm:text-base rounded-lg
+              className="flex-1 py-2 text-sm sm:text-base rounded-lg
                 bg-black/60 border border-white/30
                 text-white font-semibold
                 hover:bg-red-500 hover:border-none
-                transition-all
-              "
+                transition-all"
             >
               Ignore
             </button>

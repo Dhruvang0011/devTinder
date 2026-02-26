@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Toaster } from "react-hot-toast";
 import Body from './Component/Body'
 import Feed from './Component/Feed'
 import Login from './Component/Login'
@@ -14,6 +15,7 @@ import Search from './Component/Search'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={appStore}>
+  <Toaster position="top-center" reverseOrder={false} />
   <BrowserRouter basename="/">
       <Routes>
         <Route path="/" element = {<Body />}>
