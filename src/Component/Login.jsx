@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../../utils/userSlice";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -10,6 +10,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const user = useSelector((store) => store.user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -42,6 +43,12 @@ const Login = () => {
       handleLogin();
     }
   };
+
+  useEffect(() => {
+  if (user) {
+    navigate("/feed");
+  }
+}, [user, navigate]);
 
   return (
     <div className="w-full flex items-center justify-center px-4 sm:px-6 md:px-0 py-24">
