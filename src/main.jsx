@@ -15,8 +15,8 @@ import Search from './Component/Search'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={appStore}>
-  <Toaster position="top-center" reverseOrder={false} />
   <BrowserRouter basename="/">
+  <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route path="/" element = {<Body />}>
           <Route index element = {<Login/>}></Route>
