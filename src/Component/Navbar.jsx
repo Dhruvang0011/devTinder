@@ -29,97 +29,89 @@ const Navbar = () => {
 
     {/* PAGE CONTENT */}
     <div className="drawer-content">
-      <div className="navbar bg-accent-content shadow-sm relative">
+<div className="navbar bg-accent-content shadow-sm">
+  
+  {/* LEFT */}
+  <div className="navbar-start">
+    {user && (
+      <label
+        htmlFor="main-drawer"
+        className="btn btn-ghost btn-circle drawer-button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h16M4 18h7"
+          />
+        </svg>
+      </label>
+    )}
+  </div>
 
-        {/* LEFT SIDE */}
-        <div className="navbar-start">
-          {user && (
-            <label
-              htmlFor="main-drawer"
-              className="btn btn-ghost btn-circle drawer-button"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
-              </svg>
-            </label>
-          )}
-        </div>
+  {/* CENTER */}
+  <div className="navbar-center">
+    {!user ? (
+      <span className="btn btn-ghost text-xl">
+        👨‍💻 DevTinder
+      </span>
+    ) : (
+      <Link to="/feed" className="btn btn-ghost text-xl">
+        👨‍💻 DevTinder
+      </Link>
+    )}
+  </div>
 
-        {/* CENTER - PERFECTLY CENTERED */}
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          {!user ? (
-            <span className="btn btn-ghost text-xl">
-              👨‍💻 DevTinder
-            </span>
-          ) : (
-            <Link to="/feed" className="btn btn-ghost text-xl">
-              👨‍💻 DevTinder
-            </Link>
-          )}
-        </div>
+  {/* RIGHT */}
+  {user && (
+    <div className="navbar-end">
+      <Link to="/search">
+        <button className="btn btn-ghost btn-circle">
+          🔍
+        </button>
+      </Link>
 
-        {/* RIGHT SIDE */}
-        {user && (
-          <div className="navbar-end">
+      <Link to="/requests">
+        <button className="btn btn-ghost btn-circle mx-0.5">
+          🔔
+        </button>
+      </Link>
 
-            {/* SEARCH */}
-            <Link to="/search">
-              <button className="btn btn-ghost btn-circle">
-                🔍
-              </button>
-            </Link>
-
-            {/* REQUESTS */}
-            <Link to="/requests">
-              <button className="btn btn-ghost btn-circle mx-0.5">
-                🔔
-              </button>
-            </Link>
-
-            {/* AVATAR DROPDOWN */}
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar mx-2"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    src={user?.photoUrl}
-                    alt="User avatar"
-                  />
-                </div>
-              </div>
-
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <Link to="/profile">Profile</Link>
-                </li>
-                <li>
-                  <button onClick={handleLogout}>
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </div>
+      <div className="dropdown dropdown-end">
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn btn-ghost btn-circle avatar mx-2"
+        >
+          <div className="w-10 rounded-full">
+            <img src={user?.photoUrl} alt="User avatar" />
           </div>
-        )}
+        </div>
 
+        <ul
+          tabIndex={0}
+          className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+        >
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <button onClick={handleLogout}>
+              Logout
+            </button>
+          </li>
+        </ul>
       </div>
+    </div>
+  )}
+</div>
     </div>
 
     {/* SIDEBAR */}
