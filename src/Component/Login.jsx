@@ -44,11 +44,9 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
   if (user) {
-    navigate("/feed");
-  }
-}, [user, navigate]);
+  return <Navigate to="/feed" replace />;
+}
 
   return (
     <div className="w-full flex items-center justify-center px-4 sm:px-6 md:px-0 py-24">
