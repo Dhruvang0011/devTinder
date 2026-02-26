@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [sendingId, setSendingId] = useState(null);
 
   useEffect(() => {
     const trimmed = searchText.trim();
@@ -34,6 +35,7 @@ const Search = () => {
 
       setUsers(res.data);
     } catch (err) {
+      toast.error("Search failed ❌");
       console.error("Search error:", err);
     } finally {
       setLoading(false);
@@ -42,16 +44,27 @@ const Search = () => {
 
   const handleSendRequest = async (userId) => {
     try {
+      setSendingId(userId);
+
+      const toastId = toast.loading("Sending request...");
+
       await axios.post(
         `${import.meta.env.VITE_API_URL}/request/send/intrested/${userId}`,
         {},
         { withCredentials: true }
       );
 
-      // Update UI instantly
+      toast.dismiss(toastId);
+      toast.success("🚀 Request Sent Successfully!");
+
+      // Remove user from UI instantly
       setUsers(prev => prev.filter(u => u._id !== userId));
+
     } catch (err) {
+      toast.error("Failed to send request ❌");
       console.error("Request error:", err);
+    } finally {
+      setSendingId(null);
     }
   };
 
@@ -113,15 +126,15 @@ const Search = () => {
                   </div>
                 </div>
 
-                {/* Conditional Button */}
-                
-                  <button
-                    onClick={() => handleSendRequest(user._id)}
-                    className="px-4 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
-                  >
-                    Send Request
-                  </button>
-                
+                <button
+                  disabled={sendingId === user._id}
+                  onClick={() => handleSendRequest(user._id)}
+                  className="px-4 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 
+                             disabled:bg-gray-500 disabled:cursor-not-allowed
+                             text-white rounded-lg transition"
+                >
+                  {sendingId === user._id ? "Sending..." : "Send Request"}
+                </button>
 
               </div>
             </div>
