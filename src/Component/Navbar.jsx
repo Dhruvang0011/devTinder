@@ -57,17 +57,17 @@ const Navbar = () => {
   </div>
 
   {/* CENTER */}
-  <div className="navbar-center">
-    {!user ? (
-      <span className="btn btn-ghost text-xl">
-        👨‍💻 DevTinder
-      </span>
-    ) : (
-      <Link to="/feed" className="btn btn-ghost text-xl">
-        👨‍💻 DevTinder
-      </Link>
-    )}
-  </div>
+  <div className="navbar-center flex-1 justify-center">
+  {!user ? (
+    <span className="btn btn-ghost text-xl">
+      👨‍💻 DevTinder
+    </span>
+  ) : (
+    <Link to="/feed" className="btn btn-ghost text-xl">
+      👨‍💻 DevTinder
+    </Link>
+  )}
+</div>
 
   {/* RIGHT */}
   {user && (
