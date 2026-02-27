@@ -16,7 +16,6 @@ const UserCard = ({ user }) => {
 
       dispatch(removeFeed(userId));
 
-      // ✅ SUCCESS TOASTS
       if (status === "intrested") {
         toast.success("🚀 Request Sent Successfully!");
       }
@@ -26,29 +25,50 @@ const UserCard = ({ user }) => {
           icon: "👀",
         });
       }
-
     } catch (err) {
       toast.error("Something went wrong ❌");
       console.log(err?.message);
     }
   };
 
+  // ✅ Skeleton Loader
+  if (!user) {
+    return (
+      <div className="relative w-full max-w-sm sm:max-w-md h-[490px] sm:h-[520px] md:h-[570px] rounded-2xl overflow-hidden shadow-2xl animate-pulse bg-neutral-800">
+        
+        <div className="absolute inset-0 bg-neutral-700"></div>
+
+        <div className="absolute bottom-0 w-full p-4 space-y-3">
+          <div className="h-6 bg-neutral-600 rounded w-3/4"></div>
+          <div className="h-4 bg-neutral-600 rounded w-1/3"></div>
+          <div className="h-4 bg-neutral-600 rounded w-full"></div>
+
+          <div className="flex gap-2 mt-3">
+            <div className="h-6 w-16 bg-neutral-600 rounded-full"></div>
+            <div className="h-6 w-16 bg-neutral-600 rounded-full"></div>
+            <div className="h-6 w-16 bg-neutral-600 rounded-full"></div>
+          </div>
+
+          <div className="flex gap-3 mt-4">
+            <div className="flex-1 h-10 bg-neutral-600 rounded-lg"></div>
+            <div className="flex-1 h-10 bg-neutral-600 rounded-lg"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full max-w-sm sm:max-w-md h-[490px] sm:h-[520px] md:h-[570px] rounded-2xl overflow-hidden shadow-2xl">
-
-      {/* Background Image */}
       <img
         src={user.photoUrl}
         alt="User"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
 
-      {/* Bottom Content */}
       <div className="absolute bottom-0 w-full p-4 sm:p-5 text-neutral-200 space-y-2">
-
         <h2 className="text-xl sm:text-2xl font-bold">
           {user.firstName} {user.lastName}
         </h2>
@@ -61,7 +81,6 @@ const UserCard = ({ user }) => {
           {user.about}
         </p>
 
-        {/* Skills */}
         <div className="flex flex-wrap gap-2 mt-2">
           {user.skil?.map((s, index) => (
             <span
@@ -78,10 +97,8 @@ const UserCard = ({ user }) => {
           ))}
         </div>
 
-        {/* Action Buttons */}
         {user._id && (
           <div className="flex gap-3 mt-4">
-
             <button
               onClick={() => handleSendRequest(user._id, "intrested")}
               className="flex-1 py-2 text-sm sm:text-base rounded-lg
@@ -102,7 +119,6 @@ const UserCard = ({ user }) => {
             >
               Ignore
             </button>
-
           </div>
         )}
       </div>

@@ -30,13 +30,12 @@ const Feed = () => {
     getFeed();
   }, []);
 
-  /* =============================
-        LOADING STATE
-     ============================= */
   if (loading) {
     return (
-      <div className="flex justify-center items-center py-24">
-        <span className="loading loading-spinner loading-lg"></span>
+      <div className="w-full flex justify-center px-4 sm:px-6 py-5">
+        <div className="w-full max-w-md">
+          <UserCard /> 
+        </div>
       </div>
     );
   }
@@ -61,7 +60,7 @@ const Feed = () => {
         FEED UI
      ============================= */
   return (
-    <div className="w-full flex justify-center px-4 sm:px-6">
+    <div className="w-full flex justify-center px-4 sm:px-6 py-5">
       <div className="w-full max-w-md">
         <UserCard user={feed[0]} />
       </div>
