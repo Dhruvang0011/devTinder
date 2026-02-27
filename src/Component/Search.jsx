@@ -107,9 +107,9 @@ const Search = () => {
               key={user?._id}
               className="group bg-slate-800/70 border border-slate-700 p-4 rounded-xl shadow hover:border-blue-500 transition duration-300"
             >
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 flex-1 min-w-0">
                   <img
                     src={user?.photoUrl}
                     alt="profile"
@@ -129,9 +129,9 @@ const Search = () => {
                 <button
                   disabled={sendingId === user._id}
                   onClick={() => handleSendRequest(user._id)}
-                  className="px-4 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 
-                             disabled:bg-gray-500 disabled:cursor-not-allowed
-                             text-white rounded-lg transition"
+                  className="shrink-0 px-4 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 
+           disabled:bg-gray-500 disabled:cursor-not-allowed
+           text-white rounded-lg transition"
                 >
                   {sendingId === user._id ? "Sending..." : "Send Request"}
                 </button>
