@@ -103,60 +103,60 @@ const Chat = ({ conversationId }) => {
   }
 
   return (
-    <div className="flex flex-col h-full w-full bg-neutral-800">
+  <div className="flex flex-col h-full w-full bg-neutral-800">
+    
+    {/* Messages */}
+    <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6 space-y-4">
+      {messages.map((msg) => {
+        const isMe = msg.senderId === user?._id;
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 sm:px-6 md:px-8 py-6 space-y-4">
-        {messages.map((msg) => {
-          const isMe = msg.senderId === user?._id;
-
-          return (
-            <div
-              key={msg._id}
-              className={`flex ${isMe ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`
-                  px-4 py-2 rounded-2xl text-sm sm:text-base
-                  max-w-[75%] md:max-w-lg
-                  break-words shadow-md
-                  ${
-                    isMe
-                      ? "bg-emerald-500 text-white rounded-br-sm"
-                      : "bg-white/10 text-white rounded-bl-sm"
-                  }
-                `}
-              >
-                {msg.text}
-              </div>
-            </div>
-          );
-        })}
-        <div ref={messagesEndRef}></div>
-      </div>
-
-      {/* Input Section */}
-      <div className="sticky bottom-0 bg-neutral-900 border-t border-white/10 px-3 sm:px-4 py-3">
-        <div className="flex gap-2 sm:gap-3">
-          <input
-            type="text"
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type a message..."
-            className="flex-1 px-4 py-2 rounded-xl bg-white/10 text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          />
-
-          <button
-            onClick={sendMessage}
-            className="px-4 sm:px-5 py-2 bg-emerald-500 rounded-xl text-white text-sm sm:text-base font-semibold hover:bg-emerald-600 transition"
+        return (
+          <div
+            key={msg._id}
+            className={`flex ${isMe ? "justify-end" : "justify-start"}`}
           >
-            Send
-          </button>
-        </div>
+            <div
+              className={`
+                px-4 py-2 rounded-2xl text-sm sm:text-base
+                max-w-[75%] md:max-w-lg
+                break-words shadow-md
+                ${
+                  isMe
+                    ? "bg-emerald-500 text-white rounded-br-sm"
+                    : "bg-white/10 text-white rounded-bl-sm"
+                }
+              `}
+            >
+              {msg.text}
+            </div>
+          </div>
+        );
+      })}
+      <div ref={messagesEndRef}></div>
+    </div>
+
+    {/* Input Section */}
+    <div className="bg-neutral-900 border-t border-white/10 px-3 sm:px-4 py-3">
+      <div className="flex gap-2 sm:gap-3">
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          placeholder="Type a message..."
+          className="flex-1 px-4 py-2 rounded-xl bg-white/10 text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+        />
+
+        <button
+          onClick={sendMessage}
+          className="px-4 sm:px-5 py-2 bg-emerald-500 rounded-xl text-white text-sm sm:text-base font-semibold hover:bg-emerald-600 transition"
+        >
+          Send
+        </button>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default Chat;

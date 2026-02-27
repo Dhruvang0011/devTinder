@@ -28,11 +28,10 @@ const Conversations = () => {
   }, []);
 
   return (
-  <div className="min-h-[calc(100vh-100px)] px-3 sm:px-6 lg:px-0 py-0">
+  <div className="h-[calc(100dvh-100px)] px-3 sm:px-6 lg:px-0 py-0">
     
     {/* MAIN CONTAINER */}
-    <div className="max-w-7xl mx-auto h-[calc(105vh-140px)] bg-neutral-800 rounded-3xl shadow-2xl overflow-hidden flex">
-
+    <div className="max-w-7xl mx-auto h-full bg-neutral-800 rounded-3xl shadow-2xl overflow-hidden flex">
       {/* ================= LEFT SIDE ================= */}
       <div
         className={`
@@ -95,7 +94,7 @@ const Conversations = () => {
       <div
         className={`
           ${selectedConversation ? "flex" : "hidden md:flex"}
-          flex-col w-full md:w-2/3 bg-neutral-850
+          flex-col w-full md:w-2/3 bg-neutral-850 h-full
         `}
       >
         {selectedConversation ? (
