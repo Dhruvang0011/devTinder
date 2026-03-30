@@ -34,7 +34,7 @@ This is the **frontend** of DevTinder — a full-stack developer networking plat
 ## ⚙️ Installation & Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/devTinder.git
+git clone https://github.com/Dhruvang0011/devTinder.git
 cd devTinder
 npm install
 npm run dev
@@ -47,7 +47,7 @@ npm run dev
 This frontend connects to the backend API:
 
 ```text
-https://your-backend-url.onrender.com
+[https://your-backend-url.onrender.com](https://devtinder-backend-dgi8.onrender.com)
 ```
 
 Make sure to update your API base URL in your code.
