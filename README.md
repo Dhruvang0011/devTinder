@@ -1,72 +1,27 @@
-# 👨🏻‍💻 DevTinder
+# 🎨 DevTinder Frontend
 
-DevTinder is a full-stack web application that enables developers to **connect, interact, and build professional relationships**. It provides a seamless platform to discover other developers, manage profiles, and communicate in real-time.
-
-Built with modern technologies, DevTinder ensures **secure authentication, real-time communication, and scalable architecture**.
+This is the **frontend** of DevTinder — a full-stack developer networking platform where users can explore profiles, connect, and chat in real-time.
 
 ---
 
 ## 🚀 Live Demo
 
-* 🌐 Frontend: https://get-devtinder.vercel.app/feed
-* ⚙️ Backend Repo: h[ttps://github.com/Dhruvang0011/devTinder-backend](https://devtinder-backend-dgi8.onrender.com)
+🌐 https://get-devtinder.vercel.app
 
 ---
 
-## 🌟 Key Features
+## ✨ Features
 
-### 🔐 Secure Authentication
-
-* JWT-based authentication system
-* Protected routes & secure access control
-
----
-
-### 👤 User Profile Management
-
-* Create and update developer profiles
-* Manage personal and professional details
-
----
-
-### 🔎 Smart Developer Search
-
-* Discover other developers easily
-* Explore profiles and connect
-
----
-
-### 💬 Real-Time Chat System
-
-* Instant messaging using **Socket.io**
-* Live, bidirectional communication
-
----
-
-### 📦 RESTful API Design
-
-* Clean and modular backend structure
-* Scalable API architecture
-
----
-
-### 🌐 Responsive UI
-
-* Fully responsive across all devices
-* Optimized for mobile, tablet, and desktop
-
----
-
-### ⚡ Performance Optimized
-
-* Efficient state management with **Redux Toolkit**
-* Smooth and fast user experience
+* 🔐 User Authentication (Login / Signup UI)
+* 👤 Profile Management UI
+* 🔎 Browse & Search Developers
+* 💬 Real-Time Chat Interface
+* 🌐 Fully Responsive Design
+* ⚡ Fast & Optimized Performance
 
 ---
 
 ## 🛠️ Tech Stack
-
-### 🎨 Frontend
 
 * React.js
 * Redux Toolkit
@@ -76,102 +31,49 @@ Built with modern technologies, DevTinder ensures **secure authentication, real-
 
 ---
 
-### ⚙️ Backend
+## ⚙️ Installation & Setup
 
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* Socket.io
-* JSON Web Token (JWT)
-
----
-
-## ☁️ Deployment & Hosting
-
-* Frontend: Vercel
-* Backend: Render
-* Database: MongoDB Atlas
-
----
-
-## 🏗️ Architecture Overview
-
-DevTinder follows a **modern client-server architecture**:
-
-* The **frontend** handles UI rendering and state management
-* The **backend** manages authentication, users, and chat system
-* **MongoDB** stores user profiles and conversations
-* **Socket.io** enables real-time communication
-
-This architecture ensures:
-
-* Scalability
-* Maintainability
-* High performance
-
----
-
-## 🔐 Environment Variables
-
-The backend requires the following environment variables:
-
-| Variable   | Description                   |
-| ---------- | ----------------------------- |
-| MONGO_URI  | MongoDB connection string     |
-| JWT_SECRET | Secret key for authentication |
-| CLIENT_URL | Frontend application URL      |
-
----
-
-## 📁 Project Structure
-
-```
-devTinder
- ├── devTinder-backend
- │    ├── src
- │    ├── routes
- │    ├── controllers
- │    └── config
- │
- ├── devTinder-frontend
- │    ├── src
- │    ├── components
- │    └── pages
- │
- └── README.md
+```bash
+git clone https://github.com/YOUR_USERNAME/devTinder.git
+cd devTinder
+npm install
+npm run dev
 ```
 
 ---
 
-## 📌 Project Highlights
+## 🔗 API Integration
 
-* Clean and scalable architecture
-* Real-time chat implementation
-* Secure JWT authentication
-* Fully deployed full-stack application
-* Portfolio-grade project
+This frontend connects to the backend API:
 
----
+```text
+https://your-backend-url.onrender.com
+```
 
-## 📸 Screenshots
-
-(Add screenshots or GIFs here for better presentation)
+Make sure to update your API base URL in your code.
 
 ---
 
-## 🤝 Contributing
+## 📁 Folder Structure
 
-Contributions are welcome! Feel free to fork the repo and submit a pull request.
+```
+src
+ ├── components
+ ├── pages
+ ├── redux
+ ├── utils
+```
 
 ---
 
-## 📜 License
+## ⚠️ Important Notes
 
-This project is licensed under the **MIT License**.
+* Backend must be running for full functionality
+* Update API base URL before deployment
+* Do not expose sensitive data
 
 ---
 
 ## ⭐ Support
 
-If you found this project helpful, please give it a ⭐ on GitHub!
+If you like this project, give it a ⭐!
