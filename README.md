@@ -47,7 +47,7 @@ npm run dev
 This frontend connects to the backend API:
 
 ```text
-[https://your-backend-url.onrender.com](https://devtinder-backend-dgi8.onrender.com)
+https://devtinder-backend-dgi8.onrender.com
 ```
 
 Make sure to update your API base URL in your code.
